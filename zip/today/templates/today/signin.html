@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sign In{% endblock title %} 
+{% block css %}<link rel="stylesheet" href="{% static 'today/form.css' %}">{% endblock css %}
+
+{% block body %}
+
+  <main class="form-signin w-100 m-auto">
+    {% include "today/includes/alerts.html" %}
+  
+    <form action="{% url 'signin' %}" method="POST" class="text-center">
+        {% csrf_token %}
+      <img class="mb-4" src="{% static 'today/images/monitor.png' %}" alt="" width="144" height="114">
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+  
+      <div class="form-floating">
+        <input type="username" class="form-control"  placeholder="Username" name="username">
+        <label for="floatingInput">Username</label>
+      </div>
+      <div class="form-floating mb-3" >
+        <input type="password" class="form-control"  placeholder="Password" name="password">
+        <label for="floatingPassword">Password</label>
+      </div>
+    
+      <div class="container mb-3">
+        <a id="signuplink" href="{% url 'signup' %}">Create account</a>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2022–2023</p>
+    </form>
+  </main> 
+
+{% endblock body %}
+
